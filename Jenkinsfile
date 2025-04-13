@@ -37,46 +37,46 @@ pipeline {
   //     archiveArtifacts artifacts: 'cypress/videos/**', allowEmptyArchive: true
   //   }
   // }
-  agent any
+//   agent any
+
+//   stages {
+//     stage('build') {
+//       steps {
+//         echo 'building the application...'
+//       }
+//     }
+
+//     stage('test') {
+//       steps {
+//         echo 'testing the application...'
+//       }
+//     }
+
+//     stage('deploy') {
+//       steps {
+//         echo 'deploy the application...'
+//       }
+//     }
+//   }
 
   stages {
-    stage('build') {
+    stage('Build') {
       steps {
-        echo 'building the application...'
+        sh 'npm install'
+        sh 'npm run build'
       }
     }
-
-    stage('test') {
+    stage('Test') {
       steps {
-        echo 'testing the application...'
+        sh 'npm run cypress:run'
       }
     }
-
-    stage('deploy') {
+    stage('Deploy') {
+      when { branch 'main' }
       steps {
-        echo 'deploy the application...'
+        sh './deploy.sh'
       }
     }
   }
-
-  // stages {
-  //   stage('Build') {
-  //     steps {
-  //       sh 'npm install'
-  //       sh 'npm run build'
-  //     }
-  //   }
-  //   stage('Test') {
-  //     steps {
-  //       sh 'npm run cypress:run'
-  //     }
-  //   }
-  //   stage('Deploy') {
-  //     when { branch 'main' }
-  //     steps {
-  //       sh './deploy.sh'
-  //     }
-  //   }
-  // }
 
 }
