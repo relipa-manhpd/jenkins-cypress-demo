@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'cypress/browsers:node18.12.0-chrome107'
-      args '-u root' // Nếu cần quyền root để cài npm packages
+      args '-u root'
     }
   }
 
