@@ -39,44 +39,44 @@ pipeline {
   // }
   agent any
 
-  stages {
-    stage('build') {
-      steps {
-        echo 'building the application...'
-      }
-    }
-
-    stage('test') {
-      steps {
-        echo 'testing the application...'
-      }
-    }
-
-    stage('deploy') {
-      steps {
-        echo 'deploy the application...'
-      }
-    }
-  }
-
   // stages {
-  //   stage('Build') {
+  //   stage('build') {
   //     steps {
-  //       sh 'npm install'
-  //       sh 'npm run build'
+  //       echo 'building the application...'
   //     }
   //   }
-  //   stage('Test') {
+
+  //   stage('test') {
   //     steps {
-  //       sh 'npm run cypress:run'
+  //       echo 'testing the application...'
   //     }
   //   }
-  //   stage('Deploy') {
-  //     when { branch 'main' }
+
+  //   stage('deploy') {
   //     steps {
-  //       sh './deploy.sh'
+  //       echo 'deploy the application...'
   //     }
   //   }
   // }
+
+  stages {
+    stage('Build') {
+      steps {
+        sh 'npm install'
+        sh 'npm run build'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'npm run cypress:run'
+      }
+    }
+    stage('Deploy') {
+      when { branch 'main' }
+      steps {
+        sh './deploy.sh'
+      }
+    }
+  }
 
 }
