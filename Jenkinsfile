@@ -37,7 +37,11 @@ pipeline {
   //     archiveArtifacts artifacts: 'cypress/videos/**', allowEmptyArchive: true
   //   }
   // }
-  agent any
+  agent {
+    docker {
+      image 'node:20'
+    }
+  }
 
   // stages {
   //   stage('build') {
@@ -74,7 +78,7 @@ pipeline {
     stage('Deploy') {
       when { branch 'main' }
       steps {
-        sh './deploy.sh'
+        echo "🚀 Deploying application..."
       }
     }
   }
