@@ -1,9 +1,8 @@
 pipeline {
-  agent {
-    docker {
-      image 'cypress/included:12.5.0-node18.12.0'
-      args '-v /var/run/docker.sock:/var/run/docker.sock -u root'
-    }
+  agent any
+
+  environment {
+    CYPRESS_IMAGE = 'cypress/included:12.5.0-node18.12.0'
   }
 
   stages {
