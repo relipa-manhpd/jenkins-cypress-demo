@@ -1,8 +1,8 @@
 pipeline {
   agent {
     docker {
-      image 'cypress/browsers:node18.12.0-chrome107'
-      args '-u root'
+      image 'cypress/included:12.5.0-node18.12.0'
+      args '-v /var/run/docker.sock:/var/run/docker.sock -u root'
     }
   }
 
