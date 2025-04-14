@@ -9,15 +9,15 @@ pipeline {
     stage('Build') {
       steps {
         echo "🚀 Building application..."
-        // sh 'npm install'
-        // sh 'npm run build'
+        sh 'npm install'
+        sh 'npm run build'
       }
     }
 
     stage('Test') {
       steps {
         echo "🚀 Testing application..."
-        // sh 'npm run cypress:run'
+        sh 'npm run cypress:run'
       }
     }
 
