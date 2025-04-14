@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'cypress/browsers:node18.12.0-chrome107'
-      args '-u root'
-    }
-  }
+  agent any
 
   stages {
     stage('Build') {
