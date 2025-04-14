@@ -17,6 +17,8 @@ pipeline {
     stage('Test') {
       steps {
         echo "🚀 Testing application..."
+        sh 'nohup npm run dev &'
+        sh 'npx wait-on http://localhost:5173' // Đợi đến khi server sẵn sàng
         sh 'npm run cypress:run'
       }
     }
